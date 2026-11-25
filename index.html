@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -8,6 +9,7 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <main class="contenedor">
     <header>
@@ -23,7 +25,8 @@
 
     <!-- PESTAÑA 1: materia completa -->
     <section id="materia" class="panel activo">
-      <p class="ayuda">Escribe tus tres primeros cortes. Si dejas el 40% vacío, te digo cuánto necesitas sacar para pasar.</p>
+      <p class="ayuda">Escribe tus tres primeros cortes. Si dejas el 40% vacío, te digo cuánto necesitas sacar para
+        pasar.</p>
 
       <div class="campo">
         <label for="n1">Primer 20%</label>
@@ -39,7 +42,8 @@
       </div>
       <div class="campo">
         <label for="n4">Último 40% <span class="opcional">(opcional)</span></label>
-        <input id="n4" type="text" inputmode="decimal" placeholder="Déjalo vacío para saber cuánto necesitas" autocomplete="off">
+        <input id="n4" type="text" inputmode="decimal" placeholder="Déjalo vacío para saber cuánto necesitas"
+          autocomplete="off">
       </div>
 
       <div class="botones">
@@ -50,7 +54,8 @@
 
     <!-- PESTAÑA 2: nota de un 20% -->
     <section id="corte" class="panel">
-      <p class="ayuda">Agrega las notas que componen un 20% con su porcentaje (deben sumar 100%) y calcula la nota de ese corte.</p>
+      <p class="ayuda">Agrega las notas que componen un 20% con su porcentaje (deben sumar 100%) y calcula la nota de
+        ese corte.</p>
 
       <div class="fila-titulos">
         <span>Nota</span><span>Porcentaje (%)</span><span></span>
@@ -81,6 +86,10 @@
         <img src="images/ramitas.gif" alt="Ramitas">
       </button>
       <p>Hecha por <strong>NickDZ</strong> - Ingeniería en Multimedia</p>
+      <p class="aviso">
+        Esta página no está relacionada de forma oficial con la Universidad de Boyacá.
+        La hice solo por entretenimiento y como una solución para calcular las notas con precisión.
+      </p>
     </footer>
   </main>
 
@@ -98,4 +107,5 @@
   <audio id="sonido" src="sounds/fnaf-12-3-freddys-nose-sound.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
+
 </html>
