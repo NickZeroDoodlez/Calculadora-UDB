@@ -1,14 +1,11 @@
-// Calculadora de notas UDB - NickDZ
 const NOTA_MAX = 5;
 const NOTA_PASAR = 3;
 
 const GIF_NICK = "images/nick-wilde-zootopia.gif";
 const GIF_ARDILLA = "images/squirrel-squirrel-flying-away-in-storm.gif";
 
-// ---------- utilidades ----------
 const $ = (id) => document.getElementById(id);
 
-// Convierte el texto a número. Acepta coma o punto. Vacío -> null, inválido -> NaN
 function leerNumero(texto) {
   const limpio = String(texto).trim().replace(",", ".");
   if (limpio === "") return null;
@@ -19,7 +16,6 @@ function esNotaValida(n) {
   return typeof n === "number" && !isNaN(n) && n >= 0 && n <= NOTA_MAX;
 }
 
-// ---------- notificación centrada ----------
 const modal = $("modal");
 
 function mostrarModal({ titulo, nota, mensaje, gif, esError, aprobo }) {
@@ -256,5 +252,5 @@ resetCorte();
 $("btnRamitas").addEventListener("click", () => {
   const audio = $("sonido");
   audio.currentTime = 0;
-  audio.play().catch(() => {});
+  audio.play().catch(() => { });
 });

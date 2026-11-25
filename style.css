@@ -1,4 +1,3 @@
-/* Calculadora de notas UDB - colores tomados del logo de la Universidad de Boyacá */
 :root {
   --rojo: #e30613;
   --rojo-oscuro: #b8050f;
@@ -49,7 +48,6 @@ h1 { margin: 0; font-size: 1.45rem; line-height: 1.2; }
   font-size: 0.85rem;
 }
 
-/* pestañas */
 .pestanas { display: flex; gap: 6px; margin-bottom: 18px; border-bottom: 2px solid var(--borde); }
 .pestana {
   flex: 1;
