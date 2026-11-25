@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e30613">
+  <title>Calculadora de notas UDB</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="contenedor">
+    <header>
+      <img class="logo" src="images/logo-ub.png" alt="Universidad de Boyacá">
+      <h1>Calculadora de notas UDB</h1>
+      <p class="sub">Notas de 0 a 5 · Se pasa con 3.0</p>
+    </header>
+
+    <nav class="pestanas" role="tablist">
+      <button class="pestana activa" data-tab="materia" role="tab">Notas de la materia</button>
+      <button class="pestana" data-tab="corte" role="tab">Nota de un 20%</button>
+    </nav>
+
+    <!-- PESTAÑA 1: materia completa -->
+    <section id="materia" class="panel activo">
+      <p class="ayuda">Escribe tus tres primeros cortes. Si dejas el 40% vacío, te digo cuánto necesitas sacar para pasar.</p>
+
+      <div class="campo">
+        <label for="n1">Primer 20%</label>
+        <input id="n1" type="text" inputmode="decimal" placeholder="0.0 a 5.0" autocomplete="off">
+      </div>
+      <div class="campo">
+        <label for="n2">Segundo 20%</label>
+        <input id="n2" type="text" inputmode="decimal" placeholder="0.0 a 5.0" autocomplete="off">
+      </div>
+      <div class="campo">
+        <label for="n3">Tercer 20%</label>
+        <input id="n3" type="text" inputmode="decimal" placeholder="0.0 a 5.0" autocomplete="off">
+      </div>
+      <div class="campo">
+        <label for="n4">Último 40% <span class="opcional">(opcional)</span></label>
+        <input id="n4" type="text" inputmode="decimal" placeholder="Déjalo vacío para saber cuánto necesitas" autocomplete="off">
+      </div>
+
+      <div class="botones">
+        <button id="btnCalcular" class="btn principal">Calcular</button>
+        <button id="btnReset" class="btn secundario">Reset</button>
+      </div>
+    </section>
+
+    <!-- PESTAÑA 2: nota de un 20% -->
+    <section id="corte" class="panel">
+      <p class="ayuda">Agrega las notas que componen un 20% con su porcentaje (deben sumar 100%) y calcula la nota de ese corte.</p>
+
+      <div class="fila-titulos">
+        <span>Nota</span><span>Porcentaje (%)</span><span></span>
+      </div>
+      <div id="filas"></div>
+
+      <button id="btnAgregar" class="btn enlace">+ Agregar nota</button>
+      <p id="sumaPorc" class="suma">Suma de porcentajes: 0%</p>
+
+      <div class="botones">
+        <button id="btnCalcCorte" class="btn principal">Calcular nota del corte</button>
+        <button id="btnResetCorte" class="btn secundario">Reset</button>
+      </div>
+
+      <div id="usar" class="usar oculto">
+        <label for="destino">Pasar este resultado a:</label>
+        <select id="destino">
+          <option value="n1">Primer 20%</option>
+          <option value="n2">Segundo 20%</option>
+          <option value="n3">Tercer 20%</option>
+        </select>
+        <button id="btnUsar" class="btn secundario">Usar</button>
+      </div>
+    </section>
+
+    <footer>
+      <button id="btnRamitas" class="ramitas" aria-label="Ramitas (toca para escuchar)">
+        <img src="images/ramitas.gif" alt="Ramitas">
+      </button>
+      <p>Hecha por <strong>NickDZ</strong> - Ingeniería en Multimedia</p>
+    </footer>
+  </main>
+
+  <!-- Notificación centrada -->
+  <div id="modal" class="modal oculto" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+    <div class="modal-caja">
+      <button id="cerrarModal" class="cerrar" aria-label="Cerrar">&times;</button>
+      <h2 id="modalTitulo"></h2>
+      <p id="modalNota" class="nota-grande"></p>
+      <p id="modalMensaje"></p>
+      <img id="modalGif" class="oculto" alt="">
+    </div>
+  </div>
+
+  <audio id="sonido" src="sounds/fnaf-12-3-freddys-nose-sound.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>

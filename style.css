@@ -1,0 +1,212 @@
+/* Calculadora de notas UDB - colores tomados del logo de la Universidad de Boyacá */
+:root {
+  --rojo: #e30613;
+  --rojo-oscuro: #b8050f;
+  --negro: #111111;
+  --gris: #666666;
+  --gris-claro: #f3f3f3;
+  --borde: #dcdcdc;
+  --verde: #1e8449;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  color: var(--negro);
+  background: var(--gris-claro);
+  border-top: 8px solid var(--rojo);
+  display: flex;
+  justify-content: center;
+  padding: 20px 12px calc(36px + env(safe-area-inset-bottom));
+  -webkit-text-size-adjust: 100%;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px 20px 20px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  align-self: flex-start;
+}
+
+/* encabezado */
+header { text-align: center; margin-bottom: 20px; }
+.logo { display: block; width: auto; height: 128px; max-width: 100%; margin: 0 auto 12px; }
+h1 { margin: 0; font-size: 1.45rem; line-height: 1.2; }
+.sub {
+  display: inline-block;
+  margin: 8px 0 0;
+  padding: 3px 12px;
+  border-radius: 99px;
+  background: var(--gris-claro);
+  color: var(--gris);
+  font-size: 0.85rem;
+}
+
+/* pestañas */
+.pestanas { display: flex; gap: 6px; margin-bottom: 18px; border-bottom: 2px solid var(--borde); }
+.pestana {
+  flex: 1;
+  border: 0;
+  background: none;
+  padding: 11px 4px;
+  margin-bottom: -2px;
+  border-bottom: 3px solid transparent;
+  font: inherit;
+  font-size: 0.93rem;
+  color: var(--gris);
+  cursor: pointer;
+}
+.pestana.activa { color: var(--rojo); font-weight: 700; border-bottom-color: var(--rojo); }
+
+.panel { display: none; }
+.panel.activo { display: block; }
+.ayuda { margin: 0 0 16px; font-size: 0.9rem; color: var(--gris); line-height: 1.45; }
+
+/* campos (16px para que el iPhone no haga zoom al escribir) */
+.campo { margin-bottom: 14px; }
+.campo label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.93rem; }
+.opcional { font-weight: 400; color: var(--gris); }
+
+input[type="text"], select {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1.5px solid var(--borde);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 16px;
+  color: var(--negro);
+  background: #fff;
+}
+input[type="text"]:focus, select:focus {
+  outline: none;
+  border-color: var(--rojo);
+  box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.15);
+}
+
+/* botones */
+.botones { display: flex; gap: 10px; margin-top: 18px; }
+.btn {
+  font: inherit;
+  font-weight: 600;
+  min-height: 46px;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+}
+.btn:focus-visible, .pestana:focus-visible, .cerrar:focus-visible, .ramitas:focus-visible {
+  outline: 3px solid rgba(227, 6, 19, 0.45);
+  outline-offset: 2px;
+}
+.principal { flex: 1; background: var(--rojo); color: #fff; }
+.principal:hover { background: var(--rojo-oscuro); }
+.secundario { background: #fff; color: var(--negro); border-color: var(--negro); }
+.secundario:hover { background: var(--gris-claro); }
+.enlace { background: none; color: var(--rojo); padding: 6px 0; min-height: 0; }
+
+/* filas pestaña 2 */
+.fila-titulos, .fila { display: grid; grid-template-columns: 1fr 1fr 40px; gap: 8px; align-items: center; }
+.fila-titulos { font-size: 0.82rem; color: var(--gris); margin-bottom: 6px; }
+.fila { margin-bottom: 8px; }
+.quitar {
+  border: 0;
+  background: none;
+  font-size: 1.4rem;
+  color: var(--gris);
+  cursor: pointer;
+  border-radius: 8px;
+  height: 46px;
+}
+.quitar:hover { color: var(--rojo); background: var(--gris-claro); }
+.suma { margin: 4px 0 0; font-size: 0.88rem; color: var(--gris); }
+.suma.mal { color: var(--rojo); }
+.suma.bien { color: var(--verde); }
+
+.usar {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borde);
+  font-size: 0.9rem;
+}
+
+/* pie */
+footer { text-align: center; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--borde); color: var(--gris); font-size: 0.85rem; }
+footer p { margin: 8px 0 0; }
+footer strong { color: var(--negro); }
+.ramitas { border: 0; background: none; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.ramitas img { width: 96px; height: 96px; object-fit: contain; display: block; margin: 0 auto; transition: transform 0.15s; }
+.ramitas:active img { transform: scale(0.9); }
+
+/* notificación centrada */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 10;
+}
+.modal-caja {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  max-height: 90vh;
+  max-height: 90dvh;
+  overflow-y: auto;
+  background: #fff;
+  border-top: 6px solid var(--rojo);
+  border-radius: 14px;
+  padding: 26px 20px 22px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  animation: aparecer 0.18s ease-out;
+}
+.modal-caja h2 { margin: 0 0 6px; padding: 0 28px; font-size: 1.05rem; color: var(--gris); font-weight: 600; }
+.nota-grande { margin: 0 0 8px; font-size: 2.8rem; font-weight: 700; line-height: 1.1; }
+.nota-grande.bien { color: var(--verde); }
+.nota-grande.mal { color: var(--rojo); }
+.nota-grande.error { color: var(--rojo); font-size: 1.15rem; line-height: 1.35; font-weight: 600; }
+#modalMensaje { margin: 0; font-size: 1.1rem; line-height: 1.4; }
+#modalGif { display: block; max-width: 100%; max-height: 220px; width: auto; height: auto; margin: 16px auto 0; border-radius: 10px; }
+.cerrar {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--gris-claro);
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--negro);
+  cursor: pointer;
+}
+.cerrar:hover { background: var(--borde); }
+
+.oculto { display: none !important; }
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) { .modal-caja { animation: none; } }
+
+@media (max-width: 380px) {
+  .contenedor { padding: 18px 14px 16px; }
+  .logo { height: 104px; }
+  h1 { font-size: 1.25rem; }
+  .pestana { font-size: 0.85rem; }
+}
